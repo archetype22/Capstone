@@ -1,0 +1,16 @@
+﻿@using Capstone.Models.RecipesList
+@model Root
+
+@*search bar*@
+<div>
+        <form class="text-center" asp-action="Recipes" asp-controller="RecipesList" method="post">          
+        <input asp-for="searchTerm" placeholder="What would you like to cook?" class="rounded-pill" size="60" />
+        </form>
+</div>
+<style>
+    body {
+        background-image: url(/lib/image/pexels-photo-1435895.jpeg);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>

@@ -1,0 +1,29 @@
+﻿@using Capstone.Models.RecipesList
+@model Root
+
+@*display resulting images horizontally and title beneath each*@
+
+<div class="container">
+    <div class="text-center-1">
+        <form asp-action="Recipes" asp-controller="RecipesList" method="post">
+            <input asp-for="searchTerm" placeholder="Don't like what you see? Try something else." class="rounded-pill" size="60" />
+        </form>
+    </div>
+    
+    <div class="row align-items-center justify-content-center vh-100">
+        
+        @for (int i = 0; i < 4; i++)
+        {
+            <div class="col m-1">
+                <a href="/RecipesInformation/Info/@Model.results[i].id"><img class="w-100" src="@Model.results[i].image" /></a>
+                <p class="title">@Model.results[i].title</p>
+            </div>
+        }
+    </div>
+</div>
+<style>
+    body {
+        background-color: darkgrey;
+    }    
+</style>
+

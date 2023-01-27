@@ -1,0 +1,48 @@
+﻿@using Capstone.Models.RecipesInformation
+@model Root
+
+@*format ingredients to top-left quadrant, picture to top-right, and instructions below*@
+@*selected recipe instructions, maybe add nutritional info*@
+
+<div>
+    <form asp-action="Info" asp-controller="RecipesInformation" method="post">
+    </form>
+    <div class="row align-items-center">
+        <div class="col m-1">
+            <p><strong>Ingredients</strong></p>
+            @foreach (var ingredient in Model.extendedIngredients)
+            {
+                <ul>
+                    <li>@ingredient.name - @ingredient.amount @ingredient.unit</li>
+                </ul>
+            }
+        </div>
+
+        <div class="col">
+            <p><strong>@Model.title</strong></p>
+            <p><strong>@Model.cookingMinutes Minutes Cook Time</strong></p>
+            <p><strong>@Model.preparationMinutes Minutes Prep Time</strong></p>
+        </div>
+        <div class="col">
+            <a href="/RecipesInformation/Info/@Model.id"><img src="@Model.image" /></a>
+        </div>
+    </div>
+
+
+    <p><strong>Instructions</strong></p>
+    @foreach (var instructions in Model.analyzedInstructions)
+    {
+        <ul>
+            @foreach (var step in instructions.steps)
+            {
+                <li>@step.step</li>
+            }
+        </ul>
+    }
+
+</div>
+<style>
+    body {
+        background-color: darkgrey;
+    }
+</style>

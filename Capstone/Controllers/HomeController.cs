@@ -1,5 +1,7 @@
 ﻿using Capstone.Models;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using RestSharp;
 using System.Diagnostics;
 
 namespace Capstone.Controllers
@@ -14,11 +16,15 @@ namespace Capstone.Controllers
         }
 
         public IActionResult Index()
+        {                       
+            return View();
+        }
+        public IActionResult Info() 
         {
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult About()
         {
             return View();
         }
